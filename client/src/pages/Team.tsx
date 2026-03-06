@@ -156,8 +156,9 @@ export default function Team() {
               >
                 <img
                   src={agent.img}
-                  alt={agent.name}
+                  alt={`Asesor inmobiliario bilingüe ${agent.name} en San Luis Potosí - MX Realtors`}
                   className="w-full"
+                  loading="lazy"
                   style={{ aspectRatio: "3/4", objectFit: "cover", objectPosition: "top" }}
                 />
                 <div className="overlay">

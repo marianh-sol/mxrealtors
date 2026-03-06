@@ -431,8 +431,9 @@ export default function Home() {
                 <div className="relative overflow-hidden">
                   <motion.img
                     src={ASSETS.equipo}
-                    alt="Equipo MX Realtors"
+                    alt="Equipo de expertos inmobiliarios de MX Realtors en San Luis Potosí"
                     className="w-full aspect-[4/3] object-cover object-top"
+                    loading="lazy"
                     whileHover={{ scale: 1.03 }}
                     transition={{ duration: 0.6, ease: easeOut }}
                   />
@@ -699,15 +700,17 @@ export default function Home() {
                 <div className="overflow-hidden">
                   <img
                     src={ASSETS.heroInterior}
-                    alt="Interior de lujo"
+                    alt="Interior de propiedad de lujo en San Luis Potosí"
                     className="w-full aspect-[3/4] object-cover hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
                   />
                 </div>
                 <div className="overflow-hidden mt-8">
                   <img
                     src={ASSETS.heroCity}
-                    alt="San Luis Potosí"
+                    alt="Vista panorámica de San Luis Potosí, México"
                     className="w-full aspect-[3/4] object-cover hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
                   />
                 </div>
               </div>
@@ -781,8 +784,9 @@ export default function Home() {
               >
                 <img
                   src={agent.img}
-                  alt={agent.name}
+                  alt={`Asesor inmobiliario ${agent.name} - MX Realtors`}
                   className="w-full"
+                  loading="lazy"
                   style={{ aspectRatio: "3/4", objectFit: "cover", objectPosition: "top" }}
                 />
                 <div className="overlay">
