@@ -4,7 +4,7 @@
  * Mobile: hamburger menu con slide-in animado, overlay completo
  */
 import { useState, useEffect } from "react";
-import { Phone, Menu, X, Instagram, Facebook } from "lucide-react";
+import { Phone, Menu, X, Instagram, Facebook, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "wouter";
 
@@ -194,7 +194,7 @@ export default function Navbar() {
                 className="flex flex-col items-center justify-center p-4 bg-white/5 border border-white/10 rounded-2xl gap-2 active:bg-white/10 transition-colors"
                 aria-label="WhatsApp"
               >
-                <Instagram size={20} className="text-[#e8197a]" />
+                <MessageCircle size={20} className="text-[#e8197a]" />
                 <span className="text-[11px] text-white/60 uppercase tracking-widest font-body">WhatsApp</span>
               </a>
             </div>

@@ -228,11 +228,11 @@ function ScaleIn({ children, delay = 0, className = "" }: { children: React.Reac
 function StatCard({ value, suffix, label, started }: { value: number; suffix: string; label: string; started: boolean }) {
   const count = useCounter(value, 1500, started);
   return (
-    <div className="text-center lg:text-left">
+    <div className="text-center lg:text-left flex flex-col items-center lg:items-start h-full">
       <div className="stat-number">
         {count}<span className="text-[#e8197a]">{suffix}</span>
       </div>
-      <p className="text-white/60 text-sm mt-2 tracking-wide" style={{ fontFamily: "'Montserrat', sans-serif" }}>{label}</p>
+      <p className="text-white/70 text-[10px] sm:text-xs mt-3 uppercase tracking-widest leading-relaxed max-w-[120px]" style={{ fontFamily: "'Montserrat', sans-serif" }}>{label}</p>
     </div>
   );
 }
