@@ -634,7 +634,7 @@ export default function Home() {
       <section className="section-cream py-20 lg:py-28">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <FadeLeft>
+            <div>
               <span className="section-label block mb-4">¿Por Qué Elegirnos?</span>
               <h2 className="section-title text-[#0a0a0a] mb-6">
                 Lo Que Nos Hace<br />
@@ -664,13 +664,9 @@ export default function Home() {
                     desc: "Trabajamos de la mano con Mexmove, empresa de relocation para personal de BMW y otras empresas internacionales en SLP.",
                   },
                 ].map((item, idx) => (
-                  <motion.div
+                  <div
                     key={item.num}
                     className="tarjeta-servicio flex gap-6 p-5"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, ease: easeOut, delay: idx * 0.1 }}
                   >
                     <span className="icono-contenedor font-display text-4xl font-bold text-[#e8197a]/40 leading-none flex-shrink-0 w-12 transition-all duration-400">
                       {item.num}
@@ -679,7 +675,7 @@ export default function Home() {
                       <h4 className="font-display text-lg text-white mb-2">{item.title}</h4>
                       <p className="text-white/60 text-sm font-body leading-relaxed">{item.desc}</p>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
               <div className="mt-8 flex justify-center lg:justify-start">
@@ -692,10 +688,10 @@ export default function Home() {
                   <ArrowRight size={14} />
                 </a>
               </div>
-            </FadeLeft>
+            </div>
 
             {/* Image collage */}
-            <FadeRight className="relative">
+            <div className="relative">
               <div className="grid grid-cols-2 gap-4">
                 <div className="overflow-hidden">
                   <img
@@ -734,7 +730,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </FadeRight>
+            </div>
           </div>
         </div>
       </section>

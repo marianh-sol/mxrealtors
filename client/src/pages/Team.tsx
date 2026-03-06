@@ -85,37 +85,7 @@ export default function Team() {
                 <span className="italic text-[#e8197a]">Asesores</span>
               </motion.h1>
             </div>
-            <motion.div
-              className="flex flex-col sm:flex-row gap-8 lg:justify-end"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: easeOut, delay: 0.35 }}
-            >
-              <div className="text-center lg:text-right">
-                <div className="font-display text-4xl text-white">
-                  {agents.length}<span className="text-[#e8197a]">+</span>
-                </div>
-                <p className="text-white/50 text-sm mt-1" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                  Asesores Expertos
-                </p>
-              </div>
-              <div className="text-center lg:text-right">
-                <div className="font-display text-4xl text-white">
-                  {bilingualCount}<span className="text-[#e8197a]">+</span>
-                </div>
-                <p className="text-white/50 text-sm mt-1" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                  Bilingües
-                </p>
-              </div>
-              <div className="text-center lg:text-right">
-                <div className="font-display text-4xl text-white">
-                  80<span className="text-[#e8197a]">%</span>
-                </div>
-                <p className="text-white/50 text-sm mt-1" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                  Hablan Inglés
-                </p>
-              </div>
-            </motion.div>
+            <div />
           </div>
 
           {/* Accent line */}
