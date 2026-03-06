@@ -171,27 +171,48 @@ export default function Navbar() {
         {mobileOpen && (
           <motion.div
             key="mobile-menu"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed inset-0 z-40 bg-[#0a0a0a] flex flex-col"
-            style={{ paddingTop: "4rem" }}
+            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(12px)" }}
+            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="fixed inset-0 z-40 bg-[#0a0a0a]/90 flex flex-col pt-20"
           >
+            {/* Quick Actions at Top for Mobile */}
+            <div className="px-6 grid grid-cols-2 gap-3 mb-8">
+              <a
+                href="tel:4444905999"
+                className="flex flex-col items-center justify-center p-4 bg-white/5 border border-white/10 rounded-2xl gap-2 active:bg-white/10 transition-colors"
+                aria-label="Llamar"
+              >
+                <Phone size={20} className="text-[#e8197a]" />
+                <span className="text-[10px] text-white/60 uppercase tracking-widest font-body">Llamar</span>
+              </a>
+              <a
+                href="https://wa.me/524444905999"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center justify-center p-4 bg-white/5 border border-white/10 rounded-2xl gap-2 active:bg-white/10 transition-colors"
+                aria-label="WhatsApp"
+              >
+                <Instagram size={20} className="text-[#e8197a]" />
+                <span className="text-[11px] text-white/60 uppercase tracking-widest font-body">WhatsApp</span>
+              </a>
+            </div>
+
             {/* Nav Links */}
-            <div className="flex-1 flex flex-col justify-center px-8">
-              <ul className="space-y-2">
+            <div className="flex-1 flex flex-col overflow-y-auto px-8">
+              <ul className="space-y-1">
                 {navLinks.map((link, i) => (
                   <motion.li
                     key={link.href}
-                    initial={{ opacity: 0, x: -30 }}
+                    initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.07 + 0.1, duration: 0.35 }}
+                    transition={{ delay: i * 0.05 + 0.2, duration: 0.4 }}
                   >
                     <a
                       href={link.href}
                       onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-                      className="block text-white text-3xl font-display font-semibold py-3 border-b border-white/5 hover:text-[#e8197a] hover:pl-2 transition-all duration-200"
+                      className="block text-white text-4xl/tight font-display font-medium py-3 border-b border-white/5 hover:text-[#e8197a] transition-all duration-300 active:pl-2"
                     >
                       {link.label}
                     </a>
@@ -200,44 +221,39 @@ export default function Navbar() {
               </ul>
             </div>
 
-            {/* Bottom CTA */}
+            {/* Bottom CTA Section */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.35 }}
-              className="px-8 pb-10 space-y-4"
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className="p-8 space-y-4"
             >
               <a
                 href="#contacto"
                 onClick={(e) => { e.preventDefault(); handleNavClick("#contacto"); }}
-                className="btn-mx-primary w-full text-center block py-4 text-base"
+                className="btn-mx-primary w-full text-center block py-4 text-base rounded-lg"
               >
                 Agendar Cita
               </a>
-              <a
-                href="tel:4444905999"
-                className="flex items-center justify-center gap-3 text-white/60 text-sm py-2"
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
-              >
-                <Phone size={16} />
-                444 490 5999
-              </a>
-              <div className="flex justify-center gap-6 pt-2">
+
+              <div className="flex justify-center gap-8 pt-6">
                 <a
                   href="https://www.instagram.com/mx.realtors"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/40 hover:text-[#e8197a] transition-colors"
+                  className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white/70 hover:text-[#e8197a] active:scale-90 transition-all border border-white/10"
+                  aria-label="Instagram"
                 >
-                  <Instagram size={20} />
+                  <Instagram size={22} />
                 </a>
                 <a
                   href="https://www.facebook.com/profile.php?id=61572531465873"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/40 hover:text-[#e8197a] transition-colors"
+                  className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white/70 hover:text-[#e8197a] active:scale-90 transition-all border border-white/10"
+                  aria-label="Facebook"
                 >
-                  <Facebook size={20} />
+                  <Facebook size={22} />
                 </a>
               </div>
             </motion.div>

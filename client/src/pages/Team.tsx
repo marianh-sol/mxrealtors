@@ -24,14 +24,14 @@ function FadeUp({
   className?: string;
 }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-40px 0px" });
+  const inView = useInView(ref, { once: true, margin: "-10% 0px" });
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, ease: easeOut, delay }}
-      className={className}
+      transition={{ duration: 0.6, ease: easeOut, delay }}
+      className={`will-change-transform will-change-opacity ${className}`}
     >
       {children}
     </motion.div>
@@ -202,7 +202,7 @@ export default function Team() {
             >
               Nuestros asesores responden en menos de 1 hora. Cuéntanos qué estás buscando y te ayudamos a encontrarlo.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-sm mx-auto sm:max-w-none">
               <a
                 href="https://wa.me/524444905999"
                 target="_blank"

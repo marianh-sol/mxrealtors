@@ -162,14 +162,14 @@ const easeOut: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 function FadeUp({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px 0px" });
+  const inView = useInView(ref, { once: true, margin: "-10% 0px" });
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 36 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, ease: easeOut, delay }}
-      className={className}
+      transition={{ duration: 0.6, ease: easeOut, delay }}
+      className={`will-change-transform will-change-opacity ${className}`}
     >
       {children}
     </motion.div>
@@ -178,14 +178,14 @@ function FadeUp({ children, delay = 0, className = "" }: { children: React.React
 
 function FadeLeft({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px 0px" });
+  const inView = useInView(ref, { once: true, margin: "-10% 0px" });
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, x: -50 }}
+      initial={{ opacity: 0, x: -30 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.8, ease: easeOut, delay }}
-      className={className}
+      transition={{ duration: 0.7, ease: easeOut, delay }}
+      className={`will-change-transform will-change-opacity ${className}`}
     >
       {children}
     </motion.div>
@@ -194,14 +194,14 @@ function FadeLeft({ children, delay = 0, className = "" }: { children: React.Rea
 
 function FadeRight({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px 0px" });
+  const inView = useInView(ref, { once: true, margin: "-10% 0px" });
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, x: 50 }}
+      initial={{ opacity: 0, x: 30 }}
       animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.8, ease: easeOut, delay }}
-      className={className}
+      transition={{ duration: 0.7, ease: easeOut, delay }}
+      className={`will-change-transform will-change-opacity ${className}`}
     >
       {children}
     </motion.div>
@@ -359,7 +359,7 @@ export default function Home() {
               Expertos en renta y venta de inmuebles en San Luis Potosí. Asesores bilingües, miembros del AMPI, trabajando para encontrar tu solución perfecta.
             </motion.p>
             <motion.div
-              className="flex flex-wrap gap-4"
+              className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: easeOut, delay: 0.95 }}
@@ -803,7 +803,7 @@ export default function Home() {
           </div>
 
           <FadeUp className="text-center mt-12">
-            <div className="flex flex-wrap gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-sm mx-auto sm:max-w-none">
               <a
                 href="#contacto"
                 onClick={(e) => { e.preventDefault(); document.querySelector("#contacto")?.scrollIntoView({ behavior: "smooth" }); }}
@@ -843,7 +843,7 @@ export default function Home() {
           <FadeUp delay={0.2}><p className="text-white/80 max-w-xl mx-auto mb-10" style={{ fontFamily: "'Montserrat', sans-serif" }}>
             Filtra propiedades, elige las que más te gusten y agenda una cita para conocerlas. Nuestros asesores te acompañarán en cada paso.
           </p></FadeUp>
-          <FadeUp delay={0.3}><div className="flex flex-wrap gap-4 justify-center">
+          <FadeUp delay={0.3}><div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-sm mx-auto sm:max-w-none">
             <a
               href="#contacto"
               onClick={(e) => { e.preventDefault(); document.querySelector("#contacto")?.scrollIntoView({ behavior: "smooth" }); }}
