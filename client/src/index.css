@@ -1,0 +1,456 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * MX Realtors Design System — Luxury Editorial Realty
+ * Design Movement: Editorial de lujo, influencia de revistas de arquitectura premium
+ * Palette: Negro profundo / Blanco hueso / Magenta #e8197a (acento del logo)
+ * Typography: Playfair Display (serif, títulos) + DM Sans (sans-serif, cuerpo)
+ * Layout: Asimétrico, secciones alternando oscuro/claro, espaciado generoso
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* MX Realtors Brand Colors */
+  --mx-magenta: #e8197a;
+  --mx-magenta-dark: #c4156a;
+  --mx-black: #0a0a0a;
+  --mx-dark: #111111;
+  --mx-charcoal: #1e1e1e;
+  --mx-gray: #6b6b6b;
+  --mx-light-gray: #d4d4d4;
+  --mx-cream: #f8f5f0;
+  --mx-white: #ffffff;
+
+  --radius: 0.25rem;
+  --background: oklch(0.98 0.003 90);
+  --foreground: oklch(0.1 0.005 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.1 0.005 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.1 0.005 0);
+  /* Magenta as primary */
+  --primary: oklch(0.52 0.25 350);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.96 0.002 90);
+  --secondary-foreground: oklch(0.2 0.005 0);
+  --muted: oklch(0.96 0.002 90);
+  --muted-foreground: oklch(0.5 0.01 0);
+  --accent: oklch(0.52 0.25 350);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.88 0.005 0);
+  --input: oklch(0.88 0.005 0);
+  --ring: oklch(0.52 0.25 350);
+  --chart-1: oklch(0.52 0.25 350);
+  --chart-2: oklch(0.4 0.01 0);
+  --chart-3: oklch(0.6 0.01 0);
+  --chart-4: oklch(0.7 0.01 0);
+  --chart-5: oklch(0.8 0.01 0);
+  --sidebar: oklch(0.1 0.005 0);
+  --sidebar-foreground: oklch(0.95 0.005 0);
+  --sidebar-primary: oklch(0.52 0.25 350);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.2 0.005 0);
+  --sidebar-accent-foreground: oklch(0.95 0.005 0);
+  --sidebar-border: oklch(0.25 0.005 0);
+  --sidebar-ring: oklch(0.52 0.25 350);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: #0a0a0a;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+      max-width: 1400px;
+    }
+  }
+
+  /* MX Realtors Custom Components */
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-body {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .btn-mx-primary {
+    background-color: var(--mx-magenta);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    padding: 0.875rem 2rem;
+    transition: all 0.3s ease;
+    border: 1px solid var(--mx-magenta);
+  }
+
+  .btn-mx-primary:hover {
+    background-color: var(--mx-magenta-dark);
+    border-color: var(--mx-magenta-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(232, 25, 122, 0.3);
+  }
+
+  .btn-mx-outline {
+    background-color: transparent;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    padding: 0.875rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+  }
+
+  .btn-mx-outline:hover {
+    border-color: var(--mx-magenta);
+    color: var(--mx-magenta);
+  }
+
+  .btn-mx-dark {
+    background-color: var(--mx-black);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    padding: 0.875rem 2rem;
+    border: 1px solid var(--mx-black);
+    transition: all 0.3s ease;
+  }
+
+  .btn-mx-dark:hover {
+    background-color: var(--mx-charcoal);
+    transform: translateY(-1px);
+  }
+
+  .section-dark {
+    background-color: var(--mx-black);
+    color: white;
+  }
+
+  .section-cream {
+    background-color: var(--mx-cream);
+    color: var(--mx-black);
+  }
+
+  .section-white {
+    background-color: white;
+    color: var(--mx-black);
+  }
+
+  .accent-line {
+    width: 3rem;
+    height: 2px;
+    background-color: var(--mx-magenta);
+    display: block;
+  }
+
+  .text-magenta {
+    color: var(--mx-magenta);
+  }
+
+  .agent-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--mx-charcoal);
+    border: 1px solid #333;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: translateY(0);
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .agent-card:hover {
+    transform: translateY(-10px);
+    border-color: #e6007e;
+    box-shadow: 0 15px 45px rgba(230, 0, 126, 0.3);
+  }
+
+  .agent-card img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.6s ease;
+    border-radius: 15px 15px 0 0;
+  }
+
+  .agent-card:hover img {
+    transform: scale(1.05);
+  }
+
+  .agent-card .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+    padding: 1.5rem;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+    border-radius: 0 0 15px 15px;
+  }
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .property-card {
+    overflow: hidden;
+    background: white;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .property-card:hover {
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    transform: translateY(-4px);
+  }
+
+  .property-card img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .property-card:hover img {
+    transform: scale(1.05);
+  }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--mx-magenta);
+  }
+
+  .nav-link-mx {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    transition: color 0.2s ease;
+    text-decoration: none;
+  }
+
+  .nav-link-mx:hover {
+    color: var(--mx-magenta);
+  }
+
+  .section-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mx-magenta);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .whatsapp-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    background-color: #25D366;
+    color: white;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--mx-black);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--mx-magenta);
+    border-radius: 3px;
+  }
+
+  /* ── Tarjeta Servicio — Efecto 3D con Glow Rosa ─────────────────── */
+  .tarjeta-servicio {
+    border-radius: 20px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transform: translateY(0);
+  }
+
+  .tarjeta-servicio:hover {
+    transform: translateY(-10px);
+    border-color: #e6007e;
+    box-shadow: 0 15px 45px rgba(230, 0, 126, 0.3);
+  }
+
+  .tarjeta-servicio:hover .icono-contenedor {
+    filter: drop-shadow(0 0 8px #e6007e);
+    color: #fff;
+  }
+
+  /* ── Mobile Text Centering ─────────────────────────────────────────── */
+  @media (max-width: 1023px) {
+    .section-label {
+      text-align: center;
+    }
+    .section-title {
+      text-align: center;
+    }
+    .hero-title {
+      text-align: center;
+    }
+    .accent-line {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .mobile-center {
+      text-align: center;
+    }
+    .mobile-center-items {
+      align-items: center;
+    }
+    .mobile-justify-center {
+      justify-content: center;
+    }
+  }
+}
