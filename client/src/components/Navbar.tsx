@@ -6,6 +6,7 @@
 import { useState, useEffect } from "react";
 import { Phone, Menu, X, Instagram, Facebook } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link, useLocation } from "wouter";
 
 const LOGO_BLANCO = "https://d2xsxph8kpxj0f.cloudfront.net/310519663238894937/B3AiJ4uY5sTvi2a6hudqJk/mx-realtors-horizontal-blanco_7e7f6490.png";
 
@@ -22,6 +23,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [atTop, setAtTop] = useState(true);
+  const [location, setLocation] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,22 +44,35 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
+  // Handle cross-page hash navigation
+  useEffect(() => {
+    if (location === "/" && window.location.hash) {
+      const el = document.querySelector(window.location.hash);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [location]);
+
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
-    setTimeout(() => {
+    if (href.startsWith("#") && location !== "/") {
+      setLocation("/" + href);
+      return;
+    }
+    if (href.startsWith("#")) {
       const el = document.querySelector(href);
       if (el) el.scrollIntoView({ behavior: "smooth" });
-    }, 300);
+    } else {
+      setLocation(href);
+    }
   };
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled || mobileOpen
-            ? "bg-[#0a0a0a]/98 backdrop-blur-md shadow-2xl"
-            : "bg-gradient-to-b from-black/70 to-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled || mobileOpen
+          ? "bg-[#0a0a0a]/98 backdrop-blur-md shadow-2xl"
+          : "bg-gradient-to-b from-black/70 to-transparent"
+          }`}
       >
         <div className="container">
           <nav className={`flex items-center justify-between transition-all duration-500 ${atTop && !mobileOpen ? "h-18 lg:h-24" : "h-16 lg:h-18"}`}>
